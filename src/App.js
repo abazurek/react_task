@@ -9,19 +9,23 @@ import Main from "./components/Main";
 // const apiAddress='https://api.unsplash.com/search/photos?page=3&per_page=30&&query=lan&client_id=VTAtBpf3Xq0cyenmI0hSh_r872QKMf6TsOpOFpN_lhk'
 function App() {
 
-  const [data,setData]=useState('');
+  // const [data,setData]=useState('');
 
   const unsplash = new Unsplash({
     accessKey: "VTAtBpf3Xq0cyenmI0hSh_r872QKMf6TsOpOFpN_lhk",
   });
 
   useEffect(()=>{
-    unsplash.search.photos("lan", 1,30)
-        .then(toJson)
-        .then(json => {
-         setData(json)
-        });
-  },[])
+
+  },[]);
+
+  function searchPhotos(text, setData){
+      unsplash.search.photos(text, 1,30)
+          .then(toJson)
+          .then(json => {
+              setData(json)
+          });
+  }
 
 
   // if(data){
@@ -33,7 +37,7 @@ function App() {
   //
   //   }))
   // }
-  console.log(data.results)
+  // console.log(data.results)
 
   // fetch(apiAddress)
   //       .then(resp => resp.json())
@@ -45,7 +49,7 @@ function App() {
 
   return (
     <div className="App">
-      <Main/>
+      <Main searchPhotos={searchPhotos}/>
     </div>
   );
 }

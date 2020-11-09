@@ -1,27 +1,47 @@
-form{
-  label{
-    position: relative;
-  }
-  input{
-    font-family: $base-font-family;
-    //&:before{
-    //  content: "\f002";
-    //  font-family: "Font Awesome 5 Free",serif;
-    //  font-size: 17px;
-    //  position: absolute;
-    //  top: 0;
-    //  left: 0;
-    //}
-    &:focus{
-      outline: none;
+.form-box{
+  position: relative;
+  width:70%;
+  form{
+
+    label{
+      position: relative;
     }
-  &.in-main-section{
-    width:70%;
-    padding: 0.7em;
-    border: none;
-    margin: 1em auto;
-    color:$alt-font-color;
-    border-radius: 2px;
+    input{
+      font-family: $base-font-family;
+      box-sizing: border-box;
+      //&:before{
+      //  content: "\f002";
+      //  font-family: "Font Awesome 5 Free",serif;
+      //  font-size: 17px;
+      //  position: absolute;
+      //  top: 0;
+      //  left: 0;
+      //}
+      &:focus{
+        outline: none;
+      }
+      &.in-main-section{
+        width: 100%;
+        padding: 0.7em;
+        border: none;
+        margin: 1em auto;
+        color:$alt-font-color;
+        border-radius: 2px;
+      }
+    }
   }
+  .hints-box{
+    position: absolute;
+    background: $hints-background-color;
+
+    width: 100%;
+    p{
+      padding: 0.3em 0.5em ;
+      color: $alt-font-color;
+      &:hover{
+        cursor: pointer;
+        background: $hint-selected-color
+      }
+    }
   }
 }
