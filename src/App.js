@@ -1,6 +1,8 @@
 import React,{useState, useEffect} from 'react';
 import Unsplash, { toJson } from 'unsplash-js';
 
+import Main from "./components/Main";
+
 // const apiAddress='https://api.unsplash.com/search/photos?query=po&client_id=VTAtBpf3Xq0cyenmI0hSh_r872QKMf6TsOpOFpN_lhk'
 // const apiAddress='https://api.unsplash.com/photos?page=1&client_id=VTAtBpf3Xq0cyenmI0hSh_r872QKMf6TsOpOFpN_lhk'
 // const apiAddress='https://api.unsplash.com/search/photos?page=1&per_page=30&query=poland&client_id=VTAtBpf3Xq0cyenmI0hSh_r872QKMf6TsOpOFpN_lhk'
@@ -43,7 +45,7 @@ function App() {
 
   return (
     <div className="App">
-
+      <Main/>
     </div>
   );
 }

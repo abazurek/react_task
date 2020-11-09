@@ -1,0 +1,23 @@
+.main-section{
+ height: 100vh;
+  background-image: url("./../../assets/sunset.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position:center;
+  padding-top: 250px;
+  h1{
+    font-size: 3em;
+    font-weight: 900;
+    margin-bottom: 0.5em;
+  }
+    p{
+      line-height: 1.5em;
+      span{
+        text-decoration: underline;
+      }
+    }
+
+  .trenging-paragraph{
+    font-size: 0.8em;
+  }
+}
