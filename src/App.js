@@ -1,23 +1,19 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState} from 'react';
+import {BrowserRouter as Router} from "react-router-dom";
+import {Route, Switch} from 'react-router'
 import Unsplash, { toJson } from 'unsplash-js';
 
 import Main from "./components/Main";
+import Results from "./components/Results";
 
-// const apiAddress='https://api.unsplash.com/search/photos?query=po&client_id=VTAtBpf3Xq0cyenmI0hSh_r872QKMf6TsOpOFpN_lhk'
-// const apiAddress='https://api.unsplash.com/photos?page=1&client_id=VTAtBpf3Xq0cyenmI0hSh_r872QKMf6TsOpOFpN_lhk'
-// const apiAddress='https://api.unsplash.com/search/photos?page=1&per_page=30&query=poland&client_id=VTAtBpf3Xq0cyenmI0hSh_r872QKMf6TsOpOFpN_lhk'
-// const apiAddress='https://api.unsplash.com/search/photos?page=3&per_page=30&&query=lan&client_id=VTAtBpf3Xq0cyenmI0hSh_r872QKMf6TsOpOFpN_lhk'
 function App() {
 
-  // const [data,setData]=useState('');
+    const [photos, setPhotos]=useState('');
 
   const unsplash = new Unsplash({
     accessKey: "VTAtBpf3Xq0cyenmI0hSh_r872QKMf6TsOpOFpN_lhk",
   });
 
-  useEffect(()=>{
-
-  },[]);
 
   function searchPhotos(text, setData){
       unsplash.search.photos(text, 1,30)
@@ -28,29 +24,19 @@ function App() {
   }
 
 
-  // if(data){
-  //   data.results.forEach(item=>item.tags.forEach(tag=>{
-  //     if( tag.title.includes('lan') || tag.type.includes('lan')){
-  //       console.log(` title: ${tag.title}`)
-  //       console.log(` type: ${tag.type}`)
-  //     }
-  //
-  //   }))
-  // }
-  // console.log(data.results)
-
-  // fetch(apiAddress)
-  //       .then(resp => resp.json())
-  //       .then(data => console.log(data))
-  //       .catch(err => {
-  //           console.log(err)
-  //       });
-
 
   return (
-    <div className="App">
-      <Main searchPhotos={searchPhotos}/>
-    </div>
+      <Router>
+          <Switch>
+              <Route exact path='/'>
+                  <Main searchPhotos={searchPhotos} setPhotos={setPhotos}/>
+              </Route>
+              <Route path='/results'>
+                  <Results searchPhotos={searchPhotos} setPhotos={setPhotos} photos={photos}/>
+              </Route>
+          </Switch>
+      </Router>
+
   );
 }
 

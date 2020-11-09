@@ -9,14 +9,6 @@
     input{
       font-family: $base-font-family;
       box-sizing: border-box;
-      //&:before{
-      //  content: "\f002";
-      //  font-family: "Font Awesome 5 Free",serif;
-      //  font-size: 17px;
-      //  position: absolute;
-      //  top: 0;
-      //  left: 0;
-      //}
       &:focus{
         outline: none;
       }
