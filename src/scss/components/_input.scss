@@ -43,5 +43,12 @@
         background: $hint-selected-color
       }
     }
+    .no-hints{
+       &:hover{
+         background: none;
+         cursor: auto;
+       }
+     }
   }
+
 }

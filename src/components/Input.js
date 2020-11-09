@@ -1,43 +1,41 @@
 import React,{useState, useEffect} from 'react';
 
+
 export default function Input({nameOfClass,searchPhotos}){
 
     const [inputValue, setInputValue]=useState('')
-    const [data,setData]=useState('')
-    const [searchedText,setSearchedText]=useState('');
-
-    //
-    // if( inputValue.length >=3){
-    //     setSearchedText(inputValue);
-    //     searchPhotos(inputValue, setData);
-    // }else if(inputValue.length < 3){
-    //     setSearchedText('');
-    //     setData('');
-    // }
+    const [data,setData]=useState('');
 
 
-    function checkInput(target){
-       if(target.length >= 3){
-           setSearchedText(target);
-           searchPhotos(target, setData);
+    useEffect(function (){
+        if( inputValue.length >=3){
+            searchPhotos(inputValue, setData);
         }
-       else if(target.length < 3){
-           setSearchedText('');
-           setData('');
+
+    },[inputValue])
+
+    function showHints(){
+        const hintsTable=[];
+
+        if(inputValue.length >=3 && data){
+            data.results.forEach(item=>item.tags.forEach(tag=>{
+                if(tag.title.includes(inputValue)){
+                    if(!hintsTable.includes(tag.title) && hintsTable.length<6)
+                        hintsTable.push(tag.title);
+                }
+
+            }))
+        }
+
+       if(hintsTable.length !== 0){
+          return   <div className='hints-box'>{hintsTable.map(item => <p key={item}>{item}</p>)}</div>
        }
-    }
-    const hintsTable=[];
-    if(data){
-
-        data.results.forEach(item=>item.tags.forEach(tag=>{
-            if(tag.title.includes(searchedText)){
-                if(!hintsTable.includes(tag.title) && hintsTable.length<6)
-                    hintsTable.push(tag.title)
-            }
-
-        }))
+        else if(hintsTable.length === 0 && inputValue.length>=3){
+           return  <div className='hints-box'><p className='no-hints'>No hints</p></div>
+       }
 
     }
+
 
     function submitForm(e){
         e.preventDefault();
@@ -49,19 +47,10 @@ export default function Input({nameOfClass,searchPhotos}){
         <form onSubmit={submitForm}>
             <label>
                 <input className={nameOfClass} type='text' autoComplete="on" placeholder='Search free high-resolution photos'
-                onChange={({target})=>checkInput(target.value)}/>
-                //        onChange={({target})=>setInputValue(target.value)}/>
+                       onChange={({target})=>setInputValue(target.value)}/>
             </label>
         </form>
-        {hintsTable.length!==0?
-            <div className='hints-box'>
-
-                {hintsTable.map(item => <p key={item}>{item}</p>)}
-
-
-            </div>
-            :''
-        }
+            {showHints()}
         </div>
     )
 }
