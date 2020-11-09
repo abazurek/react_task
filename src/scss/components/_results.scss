@@ -4,6 +4,8 @@
     color: $alt-font-color;
     margin: 1em auto;
     font-size: 2em;
+    text-transform: capitalize;
+    font-weight: 900;
   }
 
   .buttons-box{
@@ -17,6 +19,17 @@
       color:$alt-font-color;
       padding: 5px 20px;
       margin-right: 3px;
+
+      &:focus{
+        outline: none;
+      }
     }
+  }
+
+  img{
+
+    width: 30%;
+    height: auto;
+    margin: 10px;
   }
 }

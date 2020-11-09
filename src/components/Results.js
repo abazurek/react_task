@@ -15,10 +15,19 @@ export default function Results({searchPhotos, setPhotos, photos, name, setName}
         }))
         return (
             <div className='buttons-box container'>
-                {tagsArray.map(item=><button key={item}>{item}</button>)}
+                {tagsArray.map(item=>
+                    <button onClick={(e)=> {
+                        setName(item);
+                        clickButton(e, item)
+                    }} key={item}>{item}</button>)}
             </div>
         )
 
+    }
+
+    function clickButton(e,item){
+        e.preventDefault();
+        searchPhotos(item,setPhotos);
     }
 
 
@@ -39,7 +48,7 @@ export default function Results({searchPhotos, setPhotos, photos, name, setName}
                             <h1>{name}</h1>
                         </div>
                         {showButtons()}
-                        {photos.results.map(item => <img src={item.urls.thumb} alt={item.title} key={item.id}/>)}
+                        {photos.results.map(item => <img src={item.urls.small} alt={item.title} key={item.id}/>)}
                     </div>
                 :
                 ""
