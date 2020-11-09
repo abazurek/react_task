@@ -8,28 +8,35 @@
     font-weight: 900;
   }
 
-  .buttons-box{
+  .buttons-box {
     display: flex;
     overflow: hidden;
     margin-bottom: 20px;
-    button{
+
+    button {
       background: none;
       border: 1px solid $input-results-background-color;
       border-radius: 3px;
-      color:$alt-font-color;
+      color: $alt-font-color;
       padding: 5px 20px;
       margin-right: 3px;
 
-      &:focus{
+      &:focus {
         outline: none;
       }
     }
   }
-
-  img{
-
+  .photos-box{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-end;
+  }
+  img {
     width: 30%;
     height: auto;
     margin: 10px;
   }
+
+
 }

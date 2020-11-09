@@ -25,3 +25,27 @@ body {
   padding: 0 30px;
   max-width:  990px;
 }
+
+.modal-box {
+  p {
+    color: $alt-font-color;
+    padding:1em;
+  }
+  img{
+    width: 500px;
+    height: auto;
+  }
+  .author-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    svg{
+      height: 15px;
+      width: auto;
+      color: $alt-font-color;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}
