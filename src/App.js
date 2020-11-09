@@ -9,6 +9,7 @@ import Results from "./components/Results";
 function App() {
 
     const [photos, setPhotos]=useState('');
+    const [name, setName]=useState('');
 
   const unsplash = new Unsplash({
     accessKey: "VTAtBpf3Xq0cyenmI0hSh_r872QKMf6TsOpOFpN_lhk",
@@ -29,10 +30,10 @@ function App() {
       <Router>
           <Switch>
               <Route exact path='/'>
-                  <Main searchPhotos={searchPhotos} setPhotos={setPhotos}/>
+                  <Main searchPhotos={searchPhotos} setPhotos={setPhotos} setName={setName}/>
               </Route>
               <Route path='/results'>
-                  <Results searchPhotos={searchPhotos} setPhotos={setPhotos} photos={photos}/>
+                  <Results searchPhotos={searchPhotos} setPhotos={setPhotos} photos={photos} name={name} setName={setName}/>
               </Route>
           </Switch>
       </Router>

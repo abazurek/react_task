@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom'
 
-export default function Input({nameOfClass,searchPhotos, setPhotos}){
+export default function Input({nameOfClass,searchPhotos, setPhotos, setName}){
     let history = useHistory();
 
     const [inputValue, setInputValue]=useState('')
@@ -31,7 +31,10 @@ export default function Input({nameOfClass,searchPhotos, setPhotos}){
        if(hintsTable.length !== 0){
           return   <div className='hints-box'>{hintsTable.map(item =>
               <p
-                  onClick={(e)=>submitClicked(e,item)}
+                  onClick={(e)=> {
+                      setName(item);
+                      submitClicked(e, item)
+                  }}
                  key={item}>{item}</p>)}</div>
        }
         else if(hintsTable.length === 0 && inputValue.length>=3){
@@ -42,13 +45,16 @@ export default function Input({nameOfClass,searchPhotos, setPhotos}){
 
     function submitForm(e){
         e.preventDefault();
+        setName(inputValue);
        searchPhotos(inputValue,setPhotos);
+       setInputValue('')
         history.push('/results')
     }
 
     function submitClicked(e,item){
         e.preventDefault();
         searchPhotos(item,setPhotos);
+        setInputValue('')
         history.push('/results')
     }
 
@@ -57,8 +63,7 @@ export default function Input({nameOfClass,searchPhotos, setPhotos}){
             <label>
                 <input className={nameOfClass} type='text' autoComplete="on" placeholder='Search free high-resolution photos'
                        onChange={({target})=>setInputValue(target.value)}
-                       // onDragEnter={(e)=>submitForm(e,inputValue)}
-                       // onDragEnter={({target})=>console.log(target)}
+                      value={inputValue}
                 />
             </label>
         </form>

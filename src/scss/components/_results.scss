@@ -1,0 +1,22 @@
+.results-section {
+
+  h1 {
+    color: $alt-font-color;
+    margin: 1em auto;
+    font-size: 2em;
+  }
+
+  .buttons-box{
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 20px;
+    button{
+      background: none;
+      border: 1px solid $input-results-background-color;
+      border-radius: 3px;
+      color:$alt-font-color;
+      padding: 5px 20px;
+      margin-right: 3px;
+    }
+  }
+}

@@ -9,16 +9,21 @@
     input{
       font-family: $base-font-family;
       box-sizing: border-box;
+      width: 100%;
+      padding: 0.7em;
+      border: none;
+      margin: 1em auto;
+      color:$alt-font-color;
       &:focus{
         outline: none;
       }
       &.in-main-section{
-        width: 100%;
-        padding: 0.7em;
-        border: none;
-        margin: 1em auto;
-        color:$alt-font-color;
         border-radius: 2px;
+      }
+      &.in-results-section{
+        background: $input-results-background-color;
+        border-radius: calc( 35.6562px / 2);
+        padding-left: 1.5em;
       }
     }
   }
